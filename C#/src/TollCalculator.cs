@@ -23,8 +23,7 @@ public class TollCalculator
             throw new ArgumentNullException($"{nameof(dates)} cannot be null.");
         }
 
-        // Getting the type system to work for us.
-        if (vehicle is not Car)
+        if (IsTollFreeVehicle(vehicle))
         {
             return 0;
         }
@@ -75,6 +74,17 @@ public class TollCalculator
         total += GetFeeForDay(day);
         return total;
     }
+
+    private static bool IsTollFreeVehicle(Vehicle vehicle) => vehicle switch
+    {
+        Diplomat _ => true,
+        Emergency _ => true,
+        Foreign _ => true,
+        Military _ => true,
+        Motorbike _ => true,
+        Tractor _ => true,
+        _ => false
+    };
 
     private static int GetFeeForDay(List<DateTime> day)
     {

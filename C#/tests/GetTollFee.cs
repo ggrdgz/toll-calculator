@@ -89,21 +89,32 @@ public class UnitTest1
     // TEST CASE: Some vehicle types are fee-free. In our case only cars are charged.
     [Theory]
     [ClassData(typeof(AllDays))]
-    public void IfVehicleTypeIsNotCarNoFeeIsCharged(int dayOfYear)
+    public void NoFeesChargedIfVehicleIsTollFree(int dayOfYear)
     {
         int daysToAdd = dayOfYear - 1;
 
         var tollCalculator = new TollCalculator();
-        var motorbike = new Motorbike();
+        var vehicles = new List<Vehicle>()
+        {
+            new Diplomat(),
+            new Emergency(),
+            new Foreign(),
+            new Military(),
+            new Motorbike(),
+            new Tractor()
+        };
         var date = new DateTime(2013, 1, 1, 0, 0, 0, 0).AddDays(daysToAdd);
 
-        const int minutesInDay = 24 * 60;
-        for (int i = 0; i < minutesInDay; i++)
+        foreach (Vehicle vehicle in vehicles)
         {
-            var dates = new DateTime[1];
-            dates[0] = date.AddMinutes(i);
-            var result = tollCalculator.GetTollFee(motorbike, dates);
-            Assert.True(result == 0);
+            const int minutesInDay = 24 * 60;
+            for (int i = 0; i < minutesInDay; i++)
+            {
+                var dates = new DateTime[1];
+                dates[0] = date.AddMinutes(i);
+                var result = tollCalculator.GetTollFee(vehicle, dates);
+                Assert.True(result == 0);
+            }
         }
     }
 

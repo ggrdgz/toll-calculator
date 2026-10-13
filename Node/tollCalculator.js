@@ -54,11 +54,13 @@ class TollCalculator {
     }
 
     #isTollFreeVehicle(vehicle) {
-        if (vehicle instanceof Car) {
-            return false;
-        } else {
-            return true;
-        }
+        if (vehicle instanceof Diplomat) return true;
+        else if (vehicle instanceof Emergency) return true;
+        else if (vehicle instanceof Foreign) return true;
+        else if (vehicle instanceof Military) return true;
+        else if (vehicle instanceof Motorbike) return true;
+        else if (vehicle instanceof Tractor) return true;
+        else return false;
     }
 
     #getFeeForDay(day) {
@@ -244,9 +246,39 @@ class Car extends Vehicle {
     }
 }
 
+class Diplomat extends Vehicle {
+    constructor() {
+        super("Diplomat");
+    }
+}
+
+class Emergency extends Vehicle {
+    constructor() {
+        super("Emergency");
+    }
+}
+
+class Foreign extends Vehicle {
+    constructor() {
+        super("Foreign");
+    }
+}
+
+class Military extends Vehicle {
+    constructor() {
+        super("Military");
+    }
+}
+
 class Motorbike extends Vehicle {
     constructor() {
         super("Motorbike");
+    }
+}
+
+class Tractor extends Vehicle {
+    constructor() {
+        super("Tractor");
     }
 }
 

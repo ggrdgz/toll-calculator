@@ -25,5 +25,3 @@ When I wrte a program I consider the three things. They are, in order of importa
 
 ## Comments
 I think the algorithm should be improved based on the data that is processed. That is, we should modify the algorithm based on the common case. E.g.: If there are a lot of days with total fees that exceed the maximum fee per day then the algorithm should perform a check every now and then to see if the maximum fee has been exceeded and proceed with the processing of the next day.
-
-Also, I did not add any additional class because they can be added as needed using by the `Vehicle` interface.
