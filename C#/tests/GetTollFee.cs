@@ -8,7 +8,7 @@ public class UnitTest1
         Requirements:
         - The maximum fee for one day is 60 SEK.
         - A vehicle should only be charged once an hour. In case of multiple fees in the same hour period, the highest one applies.
-        - Some vehicle types are fee-free. In our case only cars are charged.
+        - Some vehicle types are fee-free.
         - Weekends and holidays are fee-free.
         - Every minute in span 00:00 - 05:59 should return 0 SEK.
         - Every minute in span 06:00 - 06:29 should return 8 SEK.
